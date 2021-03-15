@@ -7,10 +7,12 @@ import java.awt.Image;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -40,7 +42,10 @@ public class Ventana extends JFrame{
         //colocarEtiquetas();
         //colocarBotones();
         //colocarRadioBotones();
-        colocarCajasDeTexto();
+        //colocarCajasDeTexto();
+        //colocarAreasDeTexto();
+        colocarListasDesplegables();
+        
     }
     
     private void colocarPaneles(){
@@ -128,6 +133,26 @@ public class Ventana extends JFrame{
         cajaTexto.setBounds(50, 50, 100, 30);
         
         panel.add(cajaTexto);
+    }
+    
+    private void colocarAreasDeTexto(){
         
+        JTextArea areaTexto = new JTextArea("Ingrese el texto aquí...");
+        areaTexto.setBounds(20, 20, 300, 200);
+        areaTexto.setEditable(true); //Habilitar edición de texto.
+        
+        panel.add(areaTexto);
+    }
+    
+    private void colocarListasDesplegables(){
+        
+        String [] paises = {"Niggaragua", "Niggarica", "Nigganama", "Niggajeria"};
+        JComboBox listaDesplegable = new JComboBox(paises);
+        listaDesplegable.setBounds(20, 20, 100, 30);
+        
+        listaDesplegable.addItem("Niggargentina");
+        listaDesplegable.setSelectedItem("Niggargentina");
+        
+        panel.add(listaDesplegable);
     }
 }
