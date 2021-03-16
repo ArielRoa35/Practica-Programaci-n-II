@@ -7,6 +7,7 @@ package ni.edu.uni.programacion.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import ni.edu.uni.programacion.views.panels.PnlCalculator;
 
 /**
@@ -23,15 +24,27 @@ public class CalculatorController implements ActionListener{
     
     private void initComponent(){
         pnlCalculator.getBtnCalc().addActionListener(this);
+        pnlCalculator.getBtnNew().addActionListener(this);
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         if(e.getActionCommand().equalsIgnoreCase("Calcular")){
             double n1,n2;
-            n1 = Double.parseDouble(pnlCalculator.getTxtNumber1().getText());
-            n2 = Double.parseDouble(pnlCalculator.getTxtNumber2().getText());
-            pnlCalculator.getTxtResult().setText(String.valueOf(suma(n1,n2)));
+            try{
+                n1 = Double.parseDouble(pnlCalculator.getTxtNumber1().getText());
+                n2 = Double.parseDouble(pnlCalculator.getTxtNumber2().getText());
+                pnlCalculator.getTxtResult().setText(String.valueOf(suma(n1,n2)));
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Ingrese los valores correspondientes.", "Error", 2);
+            }
+        }
+        
+        if(e.getActionCommand().equalsIgnoreCase("Nuevo")){
+        
+            pnlCalculator.getTxtNumber1().setText("");
+            pnlCalculator.getTxtNumber2().setText("");
+            pnlCalculator.getTxtResult().setText("");
         }
     }
     

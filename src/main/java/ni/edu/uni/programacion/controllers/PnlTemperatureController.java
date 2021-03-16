@@ -8,6 +8,7 @@ package ni.edu.uni.programacion.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import ni.edu.uni.programacion.views.panels.PnlConversionTemplate;
 
 /**
@@ -37,16 +38,31 @@ public class PnlTemperatureController {
                 (ActionEvent e) -> {
                     btnConvActionPerformed(e);
                 });
+        pnlConversionTemplate.getBtnNew().addActionListener(
+                (ActionEvent e) -> {
+                    btnNewActionPerformed(e);
+                });
     }
 
     private void btnConvActionPerformed(ActionEvent e) {
-        int indexFrom = pnlConversionTemplate.getCmbFrom().getSelectedIndex();
-        int indexTo = pnlConversionTemplate.getCmbTo().getSelectedIndex();
-        double value = Double.parseDouble(
-                pnlConversionTemplate.getTxtValue().getText());
         
-        double result = convertirTemperature(value, indexFrom, indexTo);
-        pnlConversionTemplate.getLblResult().setText("Resultado: " + result);
+        try{
+            int indexFrom = pnlConversionTemplate.getCmbFrom().getSelectedIndex();
+            int indexTo = pnlConversionTemplate.getCmbTo().getSelectedIndex();
+            double value = Double.parseDouble(
+                    pnlConversionTemplate.getTxtValue().getText());
+
+            double result = convertirTemperature(value, indexFrom, indexTo);
+            pnlConversionTemplate.getLblResult().setText("Resultado: " + result);
+        }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Ingrese los valores correspondientes.", "Error", 2);
+        }
+    }
+    
+    private void btnNewActionPerformed(ActionEvent e){
+        
+        pnlConversionTemplate.getTxtValue().setText("");
+        pnlConversionTemplate.getLblResult().setText("Resultado:");
     }
 
     private double convertirTemperature(double value, int from, int to) {

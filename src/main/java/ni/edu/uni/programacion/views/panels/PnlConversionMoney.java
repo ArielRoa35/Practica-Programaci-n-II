@@ -7,19 +7,18 @@ package ni.edu.uni.programacion.views.panels;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
  *
- * @author Sistemas-05
+ * @author Ariel Roa
  */
-public class PnlConversionTemplate extends javax.swing.JPanel {
+public class PnlConversionMoney extends javax.swing.JPanel {
 
     /**
-     * Creates new form PnlConversionTemplate
+     * Creates new form PnlConversionMoney
      */
-    public PnlConversionTemplate() {
+    public PnlConversionMoney() {
         initComponents();
     }
 
@@ -39,13 +38,15 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         return cmbTo;
     }
 
-    public JLabel getLblResult() {
-        return lblResult;
+    public JTextField getTxtResult() {
+        return txtResult;
     }
 
     public JTextField getTxtValue() {
         return txtValue;
     }
+
+    
 
     
     
@@ -69,7 +70,8 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         cmbTo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtValue = new javax.swing.JTextField();
-        lblResult = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtResult = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -80,11 +82,6 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         jPanel1.add(btnConv);
 
         btnNew.setText("Nuevo");
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnNew);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -102,7 +99,6 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(cmbFrom, gridBagConstraints);
 
@@ -114,10 +110,16 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(jLabel2, gridBagConstraints);
 
+        cmbTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbToActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(cmbTo, gridBagConstraints);
 
@@ -135,22 +137,28 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(txtValue, gridBagConstraints);
 
-        lblResult.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        lblResult.setForeground(new java.awt.Color(0, 80, 174));
-        lblResult.setText("Resultado:");
+        jLabel4.setText("Resultado:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel2.add(lblResult, gridBagConstraints);
+        jPanel2.add(jLabel4, gridBagConstraints);
+
+        txtResult.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel2.add(txtResult, gridBagConstraints);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+    private void cmbToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbToActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNewActionPerformed
+    }//GEN-LAST:event_cmbToActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,9 +169,10 @@ public class PnlConversionTemplate extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblResult;
+    private javax.swing.JTextField txtResult;
     private javax.swing.JTextField txtValue;
     // End of variables declaration//GEN-END:variables
 }
